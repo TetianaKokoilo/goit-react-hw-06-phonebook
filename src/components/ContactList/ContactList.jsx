@@ -1,14 +1,19 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { StyledText, StyledList, StyledItems, StyledContactButton } from './ContactList.styled'
+import { deleteContact } from '../../redux/contactsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectFilteredContacts } from '../../redux/selectors';
 
-export const ContactList = ({ contacts, onDelete }) => {
+export const ContactList = () => {
+  const contacts = useSelector(selectFilteredContacts);
+  const dispatch = useDispatch();
   return (
     <StyledList>
-      {contacts().map(({ id, name, number }) => (
+      {contacts.map(({ id, name, number }) => (
         <StyledItems key={id}>
           <StyledText>{name}:</StyledText>
           <StyledText>{number}</StyledText>
-          <StyledContactButton type="button" onClick={() => onDelete(id)}>
+          <StyledContactButton type="button" onClick={() => dispatch(deleteContact(id))}>
             Delete
           </StyledContactButton>
         </StyledItems>
@@ -17,10 +22,10 @@ export const ContactList = ({ contacts, onDelete }) => {
   );
 };
 
-ContactList.propTypes = {
-  contacts: PropTypes.func,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  number: PropTypes.string,
+// ContactList.propTypes = {
+//   contacts: PropTypes.func,
+//   id: PropTypes.string,
+//   name: PropTypes.string,
+//   number: PropTypes.string,
 
-}
+// }
