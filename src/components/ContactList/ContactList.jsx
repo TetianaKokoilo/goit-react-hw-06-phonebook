@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+
 import { StyledText, StyledList, StyledItems, StyledContactButton } from './ContactList.styled'
 import { deleteContact } from '../../redux/contactsSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,11 +21,3 @@ export const ContactList = () => {
     </StyledList>
   );
 };
-
-// ContactList.propTypes = {
-//   contacts: PropTypes.func,
-//   id: PropTypes.string,
-//   name: PropTypes.string,
-//   number: PropTypes.string,
-
-// }
